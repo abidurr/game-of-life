@@ -1,5 +1,5 @@
 # Game of Life
 
-Conway's game of life with react and typescript.
+John Conway's Game of Life with ReactJS and TypeScript.
 
 RIP John Horton Conway.
