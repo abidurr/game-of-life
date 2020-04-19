@@ -63,13 +63,42 @@ const App: React.FC = () => {
       });
     });
 
-    setTimeout(runSimulation, 300);
+    setTimeout(runSimulation, 250);
   }, []);
 
   return (
     <>
     <div className="buttons">
       <h1>Conway's (RIP) Game of <b>Life</b></h1>
+      </div>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: `repeat(${numCols}, 20px)`,
+        }}
+      >
+        {grid.map((rows, i) => 
+        rows.map((cols, j) => (
+          <div
+          key={`${i}-${j}`}
+          onClick={() => {
+            const newGrid = produce(grid, gridCopy => {
+              gridCopy[i][j] = grid[i][j] ? 0 : 1;
+            });
+            setGrid(newGrid);
+          }}
+          style={{
+            width: 20,
+            height: 20,
+            backgroundColor: grid[i][j] ? "#1891ac" : undefined,
+            border: "solid 1px #253b6e"
+          }}
+          />
+        ))
+        )}
+      </div>
+      <div className="buttons">
       <button
         onClick={() => {
           setRunning(!running);
@@ -104,33 +133,6 @@ const App: React.FC = () => {
       >
         Clear
       </button>
-      </div>
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: `repeat(${numCols}, 20px)`,
-        }}
-      >
-        {grid.map((rows, i) => 
-        rows.map((cols, j) => (
-          <div
-          key={`${i}-${j}`}
-          onClick={() => {
-            const newGrid = produce(grid, gridCopy => {
-              gridCopy[i][j] = grid[i][j] ? 0 : 1;
-            });
-            setGrid(newGrid);
-          }}
-          style={{
-            width: 20,
-            height: 20,
-            backgroundColor: grid[i][j] ? "#1891ac" : undefined,
-            border: "solid 1px #253b6e"
-          }}
-          />
-        ))
-        )}
       </div>
     </>
   );
