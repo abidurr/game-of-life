@@ -108,7 +108,10 @@ const App: React.FC = () => {
           display: "grid",
           gridTemplateColumns: `repeat(${numCols}, 20px)`,
         }}
-        {grid.map((rows, i) => rows.map((cols, j) => (
+      >
+        {grid.map((rows, i) => 
+        rows.map((cols, j) => (
+          <div
           key={`${i}-${j}`}
           onClick={() => {
             const newGrid = produce(grid, gridCopy => {
@@ -117,8 +120,8 @@ const App: React.FC = () => {
             setGrid(newGrid);
           }}
           style={{
-            width: 20;
-            height: 20;
+            width: 20,
+            height: 20,
             backgroundColor: grid[i][j] ? "blue" : undefined,
             border: "solid 1px black"
           }}
