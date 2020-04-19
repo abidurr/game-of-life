@@ -1,8 +1,8 @@
 import React, { useState, useCallback, useRef } from "react";
 import produce from "immer";
 
-const numRows = 40;
-const numCols = 40;
+const numRows = 35;
+const numCols = 80;
 
 const operations = [
   [0, 1],
@@ -68,6 +68,8 @@ const App: React.FC = () => {
 
   return (
     <>
+    <div className="buttons">
+      <h1>Conway's (RIP) Game of <b>Life</b></h1>
       <button
         onClick={() => {
           setRunning(!running);
@@ -102,6 +104,7 @@ const App: React.FC = () => {
       >
         Clear
       </button>
+      </div>
 
       <div
         style={{
@@ -122,8 +125,8 @@ const App: React.FC = () => {
           style={{
             width: 20,
             height: 20,
-            backgroundColor: grid[i][j] ? "blue" : undefined,
-            border: "solid 1px black"
+            backgroundColor: grid[i][j] ? "#1891ac" : undefined,
+            border: "solid 1px #253b6e"
           }}
           />
         ))
